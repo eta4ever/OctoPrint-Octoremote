@@ -1,15 +1,15 @@
 <form class="form-horizontal">
 	<h3>{{ _('Communication Settings') }}</h3>
     <div class="control-group" title="{{ _('Serial port to connect to, setting this to AUTO will make OctoPrint try to automatically find the right setting') }}">
-		<label class="control-label" for="settings-octoremoteE-serialPort">{{ _('Serial Port') }}</label>
+		<label class="control-label" for="settings-OctoRemoteE-serialPort">{{ _('Serial Port') }}</label>
 		<div class="controls">
-			<select id="settings-octoremoteE-serialPort" data-bind="options: serial_portOptions, value: settings.plugins.octoremote.comport"></select>
+			<select id="settings-OctoRemoteE-serialPort" data-bind="options: serial_portOptions, value: settings.plugins.OctoRemoteE.comport"></select>
 		</div>
 	</div>
     <div class="control-group" title="{{ _('Serial baud rate to connect with, setting this to AUTO will make OctoPrint try to automatically find the right setting') }}">
-        <label class="control-label" for="settings-octoremoteE-baudrate">{{ _('Baudrate') }}</label>
+        <label class="control-label" for="settings-OctoRemoteE-baudrate">{{ _('Baudrate') }}</label>
         <div class="controls">
-            <select id="settings-octoremoteE-baudrate" data-bind="options: settings.plugins.octoremoteE.baudrateOpt, value: settings.plugins.octoremote.baudrate"></select>
+            <select id="settings-OctoRemoteE-baudrate" data-bind="options: settings.plugins.OctoRemoteE.baudrateOpt, value: settings.plugins.OctoRemoteE.baudrate"></select>
         </div>
     </div>
 	<h3>{{ _('Custom G-codes') }}</h3>
@@ -17,50 +17,50 @@
         <label class="control-label" for="knop1">{{ _('knop1') }}</label>
         <div class="controls">
 			<div class="input-append">
-            <input id="settings-octoremoteE-knop1" type="number" class="input-mini text-right" data-bind="value: settings.plugins.octoremote.knop1">
+            <input id="settings-OctoRemoteE-knop1" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemoteE.knop1">
 			</div>
         </div>
         <label class="control-label" for="knop2">{{ _('knop2') }}</label>
         <div class="controls">
 			<div class="input-append">
-            <input id="settings-octoremoteE-knop2" type="number" class="input-mini text-right" data-bind="value: settings.plugins.octoremote.knop2">
+            <input id="settings-OctoRemoteE-knop2" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemoteE.knop2">
 			</div>
         </div>
         <label class="control-label" for="knop3">{{ _('knop3') }}</label>
         <div class="controls">
 			<div class="input-append">
-            <input id="settings-octoremoteE-knop3" type="number" class="input-mini text-right" data-bind="value: settings.plugins.octoremote.knop3">
+            <input id="settings-OctoRemoteE-knop3" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemoteE.knop3">
 			</div>
         </div>
         <label class="control-label" for="knop4">{{ _('knop4') }}</label>
         <div class="controls">
 			<div class="input-append">
-            <input id="settings-octoremoteE-knop4" type="number" class="input-mini text-right" data-bind="value: settings.plugins.octoremote.knop4">
+            <input id="settings-OctoRemoteE-knop4" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemoteE.knop4">
 			</div>
         </div>
 
         <label class="control-label" for="knop5">{{ _('knop5') }}</label>
         <div class="controls">
 			<div class="input-append">
-            <input id="settings-octoremoteE-knop5" type="number" class="input-mini text-right" data-bind="value: settings.plugins.octoremoteE.knop5">
+            <input id="settings-OctoRemoteE-knop5" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemoteE.knop5">
 			</div>
         </div>
         <label class="control-label" for="knop6">{{ _('knop6') }}</label>
         <div class="controls">
 			<div class="input-append">
-            <input id="settings-octoremoteE-knop6" type="number" class="input-mini text-right" data-bind="value: settings.plugins.octoremoteE.knop6">
+            <input id="settings-OctoRemoteE-knop6" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemoteE.knop6">
 			</div>
         </div>
         <label class="control-label" for="knop7">{{ _('knop7') }}</label>
         <div class="controls">
 			<div class="input-append">
-            <input id="settings-octoremoteE-knop7" type="number" class="input-mini text-right" data-bind="value: settings.plugins.octoremoteE.knop7">
+            <input id="settings-OctoRemoteE-knop7" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemoteE.knop7">
 			</div>
         </div>
         <label class="control-label" for="knop8">{{ _('knop8') }}</label>
         <div class="controls">
 			<div class="input-append">
-            <input id="settings-octoremoteE-knop8" type="number" class="input-mini text-right" data-bind="value: settings.plugins.octoremoteE.knop8">
+            <input id="settings-OctoRemoteE-knop8" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemoteE.knop8">
 			</div>
         </div>
 
@@ -68,9 +68,9 @@
 	<h3>{{ _('Extrusion Settings') }}</h3>
     </div>
 		<div class="control-group" title="{{_('Extrusion') }}">
-			<label class="control-label" for="settings-octoremoteE-extrudercount">{{ _('Installed Extruders') }}</label>
+			<label class="control-label" for="settings-OctoRemoteE-extrudercount">{{ _('Installed Extruders') }}</label>
 			<div class="controls">
-				<input id="settings-octoremoteE-extrudercount" min="1" max="4" type="number" class="input-mini text-right" data-bind="value: settings.plugins.octoremoteE.numberOfTools">
+				<input id="settings-OctoRemoteE-extrudercount" min="1" max="4" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemoteE.numberOfTools">
 			</div>
 			
 		</div>
