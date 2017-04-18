@@ -8,7 +8,7 @@ import time
 
 from time import sleep
 
-class OctoremotePlugin(octoprint.plugin.SettingsPlugin,
+class OctoremotePluginE(octoprint.plugin.SettingsPlugin,
                        octoprint.plugin.AssetPlugin,
                        octoprint.plugin.TemplatePlugin,
 					   octoprint.plugin.StartupPlugin,
@@ -77,9 +77,9 @@ class OctoremotePlugin(octoprint.plugin.SettingsPlugin,
 		# Define your plugin's asset files to automatically include in the
 		# core UI here.
 		return dict(
-			js=["js/OctoRemote.js"],
-			css=["css/OctoRemote.css"],
-			less=["less/OctoRemote.less"]
+			js=["js/OctoRemoteE.js"],
+			css=["css/OctoRemoteE.css"],
+			less=["less/OctoRemoteE.less"]
 		)
 
 	##~~ Softwareupdate hook
@@ -139,7 +139,7 @@ class OctoremotePlugin(octoprint.plugin.SettingsPlugin,
 
 def __plugin_load__():
 	global __plugin_implementation__
-	__plugin_implementation__ = OctoremotePlugin()
+	__plugin_implementation__ = OctoremoteEPlugin()
 
 	global __plugin_hooks__
 	__plugin_hooks__ = {
