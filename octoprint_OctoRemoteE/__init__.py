@@ -139,7 +139,7 @@ class OctoremotePluginE(octoprint.plugin.SettingsPlugin,
 
 def __plugin_load__():
 	global __plugin_implementation__
-	__plugin_implementation__ = OctoremoteEPlugin()
+	__plugin_implementation__ = OctoremotePlugin()
 
 	global __plugin_hooks__
 	__plugin_hooks__ = {
