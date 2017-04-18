@@ -8,7 +8,7 @@ import time
 
 from time import sleep
 
-class OctoremotePluginE(octoprint.plugin.SettingsPlugin,
+class OctoremotePlugin(octoprint.plugin.SettingsPlugin,
                        octoprint.plugin.AssetPlugin,
                        octoprint.plugin.TemplatePlugin,
 					   octoprint.plugin.StartupPlugin,
