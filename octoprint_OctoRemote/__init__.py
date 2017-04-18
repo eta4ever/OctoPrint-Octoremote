@@ -21,14 +21,22 @@ class OctoremotePlugin(octoprint.plugin.SettingsPlugin,
 			comport="COM3",
             baudrate=115200,
             baudrateOpt=[9600,19200,115200],
-            extrusionAmount=5,
-			retractionAmount=5,
+            #extrusionAmount=5,
+			#retractionAmount=5,
 			numberOfTools=3,
-			movementSteps=[0.1,1,10,100],
-			movementStep1 = 0.1,
-			movementStep2 = 1,
-			movementStep3 = 10,
-			movementStep4 = 100
+			#movementSteps=[0.1,1,10,100],
+			#movementStep1 = 0.1,
+			#movementStep2 = 1,
+			#movementStep3 = 10,
+			#movementStep4 = 100
+			knop1 = "G28",
+			knop2 = "G1 X0",
+			knop3 = "G1 Y0",
+			knop4 = "G1 Z0",
+			knop5 = "M105",
+			knop6 = "M106 S0",
+			knop7 = "M106 S255",
+			knop8 = "M119"
 
 		)
 
@@ -37,10 +45,18 @@ class OctoremotePlugin(octoprint.plugin.SettingsPlugin,
 			comport=self._settings.get(["comport"]),
         	baudrate=self._settings.get(["baudrate"]),
 			baudrateOpt=self._settings.get(["baudrateOpt"]),
-			extrusionAmount=self._settings.get(["extrusionAmount"]),
-			retractionAmount = self._settings.get(["retractionAmount"]),
+			#extrusionAmount=self._settings.get(["extrusionAmount"]),
+			#retractionAmount = self._settings.get(["retractionAmount"]),
 			numberOfTools=self._settings.get(["numberOfTools"]),
-			movementSteps=[self._settings.get(["movementStep1"]),self._settings.get(["movementStep2"]),self._settings.get(["movementStep3"]),self._settings.get(["movementStep4"])]
+			#movementSteps=[self._settings.get(["movementStep1"]),self._settings.get(["movementStep2"]),self._settings.get(["movementStep3"]),self._settings.get(["movementStep4"])]
+			knop1 = self._settings.get(["knop1"]),
+			knop2 = self._settings.get(["knop2"]),
+			knop3 = self._settings.get(["knop3"]),
+			knop4 = self._settings.get(["knop4"]),
+			knop5 = self._settings.get(["knop5"]),
+			knop6 = self._settings.get(["knop6"]),
+			knop7 = self._settings.get(["knop7"]),
+			knop8 = self._settings.get(["knop8"])
 		)
 
 	def get_template_configs(self):
@@ -79,12 +95,12 @@ class OctoremotePlugin(octoprint.plugin.SettingsPlugin,
 
 				# version check: github repository
 				type="github_release",
-				user="pkElectronics",
+				user="eta4ever",
 				repo="OctoPrint-Octoremote",
 				current=self._plugin_version,
 
 				# update method: pip
-				pip="https://github.com/pkElectronics/OctoPrint-Octoremote/archive/{target_version}.zip"
+				pip="https://github.com/eta4ever/OctoPrint-Octoremote/archive/{target_version}.zip"
 			)
 		)
 	def on_after_startup(self):
@@ -119,7 +135,7 @@ class OctoremotePlugin(octoprint.plugin.SettingsPlugin,
 # If you want your plugin to be registered within OctoPrint under a different name than what you defined in setup.py
 # ("OctoPrint-PluginSkeleton"), you may define that here. Same goes for the other metadata derived from setup.py that
 # can be overwritten via __plugin_xyz__ control properties. See the documentation for that.
-__plugin_name__ = "Octoremote Plugin"
+__plugin_name__ = "Octoremote Plugin E"
 
 def __plugin_load__():
 	global __plugin_implementation__
@@ -173,9 +189,18 @@ class SerialThread(Thread):
 			callbackClass.getLogger().info("OctoRemote sanity check: Reverted Toolcount to 4, was"+self.toolcount)
 			self.toolcount = 4
 
-		self.extrusionAmount = config["extrusionAmount"]
-		self.retractionAmount = config["retractionAmount"]
-		self.movementOptions = config["movementSteps"]
+		#self.extrusionAmount = config["extrusionAmount"]
+		#self.retractionAmount = config["retractionAmount"]
+		#self.movementOptions = config["movementSteps"]
+		self.knop1 = config["knop1"]
+		self.knop2 = config["knop2"]
+		self.knop3 = config["knop3"]
+		self.knop4 = config["knop4"]
+		self.knop5 = config["knop5"]
+		self.knop6 = config["knop6"]
+		self.knop7 = config["knop7"]
+		self.knop8 = config["knop8"]
+
 		try:
 			self.port = serial.Serial(self.portname, baudrate=self.baudrate, timeout=3.0)
 		except:
@@ -189,8 +214,8 @@ class SerialThread(Thread):
 
 	def run(self):
 		self.cbClass.getLogger().info("Thread started")
-		self.sendCommandWithPayload(0x20, [self.movementIndex], 1)
-		self.sendCommandWithPayload(0x20, [self.toolIndex + 4], 1)
+		# self.sendCommandWithPayload(0x20, [self.movementIndex], 1)
+		# self.sendCommandWithPayload(0x20, [self.toolIndex + 4], 1)
 
 		while not self.interrupted:
 			try:
@@ -267,43 +292,51 @@ class SerialThread(Thread):
 			elif cmd == 0x10: #key pressed
 				self.sendAck()
 				if payload[0] == 0x11:
-					self.movementIndex = (self.movementIndex+1)%4
-					self.sendCommandWithPayload(0x20,[self.movementIndex],1)
+					# self.movementIndex = (self.movementIndex+1)%4
+					# self.sendCommandWithPayload(0x20,[self.movementIndex],1)
+					self.getPrinterObject().commands(self.knop1)
 				elif payload[0] == 0x12:
-					self.getPrinterObject().jog(dict(x=self.movementOptions[self.movementIndex]))
+					# self.getPrinterObject().jog(dict(x=self.movementOptions[self.movementIndex]))
+					self.getPrinterObject().commands(self.knop2)
 				elif payload[0] == 0x13:
-					self.getPrinterObject().extrude(self.extrusionAmount)
+					# self.getPrinterObject().extrude(self.extrusionAmount)
+					self.getPrinterObject().commands(self.knop3)
 				elif payload[0] == 0x14:
-					self.getPrinterObject().jog(dict(z=self.movementOptions[self.movementIndex]))
+					# self.getPrinterObject().jog(dict(z=self.movementOptions[self.movementIndex]))
+					self.getPrinterObject().commands(self.knop4)
 				elif payload[0] == 0x21:
-					self.getPrinterObject().jog(dict(y=-self.movementOptions[self.movementIndex]))
+					# self.getPrinterObject().jog(dict(y=-self.movementOptions[self.movementIndex]))
+					self.getPrinterObject().commands(self.knop5)
 				elif payload[0] == 0x22:
-					self.getPrinterObject().home(["x","y"])
+					# self.getPrinterObject().home(["x","y"])
+					self.getPrinterObject().commands(self.knop6)
 				elif payload[0] == 0x23:
-					self.getPrinterObject().jog(dict(y=self.movementOptions[self.movementIndex]))
+					# self.getPrinterObject().jog(dict(y=self.movementOptions[self.movementIndex]))
+					self.getPrinterObject().commands(self.knop7)
 				elif payload[0] == 0x24:
-					self.getPrinterObject().home(["z"])
+					# self.getPrinterObject().home(["z"])
+					self.getPrinterObject().commands(self.knop8)
 				elif payload[0] == 0x31:
-					self.toolIndex = (self.toolIndex + 1) % 4
-					self.sendCommandWithPayload(0x20, [self.toolIndex + 4], 1)
-					self.cbClass.getPrinterObject().change_tool(self.toolOptions[self.toolIndex])
+					# self.toolIndex = (self.toolIndex + 1) % 4
+					# self.sendCommandWithPayload(0x20, [self.toolIndex + 4], 1)
+					# self.cbClass.getPrinterObject().change_tool(self.toolOptions[self.toolIndex])
 				elif payload[0] == 0x32:
-					self.getPrinterObject().jog(dict(x=-self.movementOptions[self.movementIndex]))
+					# self.getPrinterObject().jog(dict(x=-self.movementOptions[self.movementIndex]))
 				elif payload[0] == 0x33:
-					self.getPrinterObject().extrude(-self.retractionAmount)
+					# self.getPrinterObject().extrude(-self.retractionAmount)
 				elif payload[0] == 0x34:
-					self.getPrinterObject().jog(dict(z=-self.movementOptions[self.movementIndex]))
+					# self.getPrinterObject().jog(dict(z=-self.movementOptions[self.movementIndex]))
 				elif payload[0] == 0x41:
-					self.getPrinterObject().cancel_print()
+					# self.getPrinterObject().cancel_print()
 				elif payload[0] == 0x42:
-					self.getPrinterObject().pause_print()
+					# self.getPrinterObject().pause_print()
 				elif payload[0] == 0x43:
 					if self.getPrinterObject().is_paused():
 						self.getPrinterObject().resume_print()
 					else:
 						self.getPrinterObject().start_print()
 				elif payload[0] == 0x44:
-					self.getPrinterObject()
+					# self.getPrinterObject()
 			elif cmd == 0x11: #key released
 				self.stuff = ""
 				#self.cbClass._logger.info("KR")

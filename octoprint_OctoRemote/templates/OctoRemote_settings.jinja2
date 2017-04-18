@@ -12,55 +12,62 @@
             <select id="settings-octoremote-baudrate" data-bind="options: settings.plugins.OctoRemote.baudrateOpt, value: settings.plugins.OctoRemote.baudrate"></select>
         </div>
     </div>
-	<h3>{{ _('Axis movement distance') }}</h3>
-	<div class="control-group" title="{{_('Einstellungen für Achsenbewegungen') }}">
-        <label class="control-label" for="settings-octoremote-movement1">{{ _('Stage 1') }}</label>
+	<h3>{{ _('Custom G-codes') }}</h3>
+	<div class="control-group" title="{{_('Custom G-codes') }}">
+        <label class="control-label" for="knop1">{{ _('knop1') }}</label>
         <div class="controls">
 			<div class="input-append">
-            <input id="settings-octoremote-movement1" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemote.movementStep1">
-			<span class="add-on">mm</span>
+            <input id="settings-octoremote-knop1" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemote.knop1">
 			</div>
         </div>
-		<label class="control-label" for="settings-octoremote-movement2">{{ _('Stage 2') }}</label>
+        <label class="control-label" for="knop2">{{ _('knop2') }}</label>
         <div class="controls">
 			<div class="input-append">
-            <input id="settings-octoremote-movement2" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemote.movementStep2">
-			<span class="add-on">mm</span>
+            <input id="settings-octoremote-knop2" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemote.knop2">
 			</div>
         </div>
-		<label class="control-label" for="settings-octoremote-movement3">{{ _('Stage 3') }}</label>
+        <label class="control-label" for="knop3">{{ _('knop3') }}</label>
         <div class="controls">
 			<div class="input-append">
-            <input id="settings-octoremote-movement3" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemote.movementStep3">
-			<span class="add-on">mm</span>
+            <input id="settings-octoremote-knop3" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemote.knop3">
 			</div>
         </div>
-		<label class="control-label" for="settings-octoremote-movement4">{{ _('Stage 4') }}</label>
+        <label class="control-label" for="knop4">{{ _('knop4') }}</label>
         <div class="controls">
-			<div class="input-append">		
-            <input id="settings-octoremote-movement4" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemote.movementStep4">
-			<span class="add-on">mm</span>
+			<div class="input-append">
+            <input id="settings-octoremote-knop4" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemote.knop4">
 			</div>
         </div>
+
+        <label class="control-label" for="knop5">{{ _('knop5') }}</label>
+        <div class="controls">
+			<div class="input-append">
+            <input id="settings-octoremote-knop5" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemote.knop5">
+			</div>
+        </div>
+        <label class="control-label" for="knop6">{{ _('knop6') }}</label>
+        <div class="controls">
+			<div class="input-append">
+            <input id="settings-octoremote-knop6" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemote.knop6">
+			</div>
+        </div>
+        <label class="control-label" for="knop7">{{ _('knop7') }}</label>
+        <div class="controls">
+			<div class="input-append">
+            <input id="settings-octoremote-knop7" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemote.knop7">
+			</div>
+        </div>
+        <label class="control-label" for="knop8">{{ _('knop8') }}</label>
+        <div class="controls">
+			<div class="input-append">
+            <input id="settings-octoremote-knop8" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemote.knop8">
+			</div>
+        </div>
+
 		
 	<h3>{{ _('Extrusion Settings') }}</h3>
     </div>
-		<div class="control-group" title="{{_('Einstellungen für Extrusion und Retraction') }}">
-			<label class="control-label" for="settings-octoremote-extrusion">{{ _('Extrusion') }}</label>
-			<div class="controls">
-				<div class="input-append">		
-				<input id="settings-octoremote-extrusion" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemote.extrusionAmount">
-				<span class="add-on">mm</span>
-			</div>
-			</div>
-			<label class="control-label" for="settings-octoremote-retraction">{{ _('Retraction') }}</label>
-			<div class="controls">
-			<div class="input-append">					
-				<input id="settings-octoremote-retraction" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemote.retractionAmount">
-				<span class="add-on">mm</span>
-			</div>
-			</div>
-			
+		<div class="control-group" title="{{_('Extrusion') }}">
 			<label class="control-label" for="settings-octoremote-extrudercount">{{ _('Installed Extruders') }}</label>
 			<div class="controls">
 				<input id="settings-octoremote-extrudercount" min="1" max="4" type="number" class="input-mini text-right" data-bind="value: settings.plugins.OctoRemote.numberOfTools">
