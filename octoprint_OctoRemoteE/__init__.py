@@ -317,18 +317,24 @@ class SerialThread(Thread):
 					# self.getPrinterObject().home(["z"])
 					self.getPrinterObject().commands(self.knop8)
 				elif payload[0] == 0x31:
+					pass
 					# self.toolIndex = (self.toolIndex + 1) % 4
 					# self.sendCommandWithPayload(0x20, [self.toolIndex + 4], 1)
 					# self.cbClass.getPrinterObject().change_tool(self.toolOptions[self.toolIndex])
 				elif payload[0] == 0x32:
+					pass
 					# self.getPrinterObject().jog(dict(x=-self.movementOptions[self.movementIndex]))
 				elif payload[0] == 0x33:
+					pass
 					# self.getPrinterObject().extrude(-self.retractionAmount)
 				elif payload[0] == 0x34:
+					pass
 					# self.getPrinterObject().jog(dict(z=-self.movementOptions[self.movementIndex]))
 				elif payload[0] == 0x41:
+					pass
 					# self.getPrinterObject().cancel_print()
 				elif payload[0] == 0x42:
+					pass
 					# self.getPrinterObject().pause_print()
 				elif payload[0] == 0x43:
 					if self.getPrinterObject().is_paused():
@@ -336,6 +342,7 @@ class SerialThread(Thread):
 					else:
 						self.getPrinterObject().start_print()
 				elif payload[0] == 0x44:
+					pass
 					# self.getPrinterObject()
 			elif cmd == 0x11: #key released
 				self.stuff = ""
