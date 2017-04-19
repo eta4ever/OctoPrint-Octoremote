@@ -37,8 +37,11 @@ char hexaKeys[ROWS][COLS] = {
   {0x31,0x32,0x33,0x34},
   {0x41,0x42,0x43,0x44}
 };
-byte rowPins[ROWS] = {5, 4, 3, 2}; //connect to the row pinouts of the keypad
-byte colPins[COLS] = {A0, A1, A2, A3}; //connect to the column pinouts of the keypad
+//byte rowPins[ROWS] = {5, 4, 3, 2}; //connect to the row pinouts of the keypad
+//byte colPins[COLS] = {A0, A1, A2, A3}; //connect to the column pinouts of the keypad
+
+byte rowPins[ROWS] = {2, 3, 4, 5};
+byte colPins[COLS] = {A0, A1, A2, A3};
 
 #define LED_G1 10
 #define LED_G2 11

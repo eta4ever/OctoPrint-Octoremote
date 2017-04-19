@@ -332,15 +332,17 @@ class SerialThread(Thread):
 					# self.getPrinterObject().jog(dict(z=-self.movementOptions[self.movementIndex]))
 				elif payload[0] == 0x41:
 					pass
+					self.getPrinterObject().toggle_pause_print();
 					# self.getPrinterObject().cancel_print()
 				elif payload[0] == 0x42:
 					pass
 					# self.getPrinterObject().pause_print()
 				elif payload[0] == 0x43:
-					if self.getPrinterObject().is_paused():
-						self.getPrinterObject().resume_print()
-					else:
-						self.getPrinterObject().start_print()
+					pass
+					# if self.getPrinterObject().is_paused():
+					# 	self.getPrinterObject().resume_print()
+					# else:
+					# 	self.getPrinterObject().start_print()
 				elif payload[0] == 0x44:
 					pass
 					# self.getPrinterObject()
