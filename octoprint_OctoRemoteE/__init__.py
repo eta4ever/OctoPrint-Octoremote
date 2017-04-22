@@ -314,8 +314,9 @@ class SerialThread(Thread):
 					# self.getPrinterObject().jog(dict(y=self.movementOptions[self.movementIndex]))
 					self.getPrinterObject().commands(self.knop7)
 				elif payload[0] == 0x24:
+					self.getPrinterObject().toggle_pause_print();
 					# self.getPrinterObject().home(["z"])
-					self.getPrinterObject().commands(self.knop8)
+					# self.getPrinterObject().commands(self.knop8)
 				elif payload[0] == 0x31:
 					pass
 					# self.toolIndex = (self.toolIndex + 1) % 4
@@ -332,7 +333,6 @@ class SerialThread(Thread):
 					# self.getPrinterObject().jog(dict(z=-self.movementOptions[self.movementIndex]))
 				elif payload[0] == 0x41:
 					pass
-					self.getPrinterObject().toggle_pause_print();
 					# self.getPrinterObject().cancel_print()
 				elif payload[0] == 0x42:
 					pass
